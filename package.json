@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
+    "beautiful": "lint-staged",
     "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,7 +24,17 @@
     "url": "https://github.com/Beozizi/test-nodejs/issues"
   },
   "homepage": "https://github.com/Beozizi/test-nodejs#readme",
+  "lint-staged": {
+    "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "devDependencies": {
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "morgan": "^1.10.0",
     "node-sass": "^8.0.0",
     "nodemon": "^2.0.22"
