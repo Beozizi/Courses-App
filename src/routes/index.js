@@ -3,9 +3,9 @@ const siteRouter = require('./site');
 
 function route(app) {
 
-    app.use('/news', newsRouter);
+    app.get('/news', newsRouter);
 
-    app.use('/', siteRouter);
+    app.get('/', siteRouter);
 
 }
 
