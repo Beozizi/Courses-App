@@ -104,8 +104,14 @@
       $('#delete-course-modal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget)
         courseId = button.data('id') 
-
+        console.log(courseId)
       });
+      
+      $('input[name="courseIds[]"]').on('show.bs.modal', function (event) {
+        var input = $(event.relatedTarget)
+        courseId = input.value('id')
+        console.log(courseId)
+      })
 
       //when delete course btn clicked
       btnDeleteCourse.onclick = function () {
@@ -136,7 +142,6 @@
         } else {
           checkAllSubmitBtn.attr('disabled', true);
         }
-        console.log(renderCheckAllSubmitBtn)
       }
 
     })

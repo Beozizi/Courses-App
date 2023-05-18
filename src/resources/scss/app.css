@@ -33,7 +33,14 @@
 }
 
 .home-card-title {
-  height: 50px;
+  height: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 25px;
+  -webkit-line-clamp: 2;
+  height: 75px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
 }
 
 .home-row {
