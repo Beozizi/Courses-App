@@ -1,17 +1,17 @@
-<div class="mt-4">
-    <div class="row">
+<div class="home-content container">
+    <div class="home-row row">
         {{#each courses}}
         <div class="col-sm-6 col-lg-4">
-                <div class="card">
+                <div class="home-card card">
                     <a href="/courses/{{this.slug}}">
                         <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
                     </a>
                     <div class="card-body">
                     <a href="/courses/{{this.slug}}">
-                        <h5 class="card-title">{{this.name}}</h5>
+                        <h5 class="home-card-title">{{this.name}}</h5>
                     </a>
-                        <p class="card-text">{{this.description}}</p>
-                        <a href="#" class="btn btn-primary">Buy course</a>
+                        <p class="home-description">{{this.description}}</p>
+                        <a href="/courses/{{this.slug}}" class="home-btn">Xem video</a>
                     </div>
             </div>
         </div>

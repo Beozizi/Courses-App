@@ -1,16 +1,16 @@
-<div class="mt-4">
-    <div class="row">
-        <div class="col-lg-3">
-            <button type="button" class="btn btn-primary">Learn</button>
-        </div>
-        <div class="col-lg-9">
-            <h2>
+<div class="courses-container">
+    <div class="courses-content">
+            <h5>Chủ đề: {{course.category}}</h5>
+            <div class="content-video">
+                <iframe width="1080" height="608" src="https://www.youtube.com/embed/{{course.videoID}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <h3>
                 {{course.name}}
-            </h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{course.videoID}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <p>
-                {{course.description}}
-            </p>
-        </div>
+            </h3>
+    </div>
+    <div class="courses-infor">
+            <h4>{{course.updatedAt}}</h4>
+            <span>Miêu tả về video: {{course.description}}</span>
+            <p><strong>Nội dung thuộc sở hữu:</strong> {{course.copyright}}</p>           
     </div>
 </div>

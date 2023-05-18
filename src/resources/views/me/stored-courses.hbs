@@ -1,22 +1,22 @@
-<div class="mt-4">
+<div class="courses-stored">
   <form name="container-form" method="POST" action="/courses/handle-form-actions">
     <div>
-      <h3>Your courses</h3>
-      <a href="/me/trash/courses">Your trash ({{deleteCount}})</a>
+      <h3>Danh sách khoá học</h3>
+      <a href="/me/trash/courses">Thùng rác ({{deleteCount}})</a>
   
       <div class="mt-4 d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="checkbox-all">
             <label class="form-check-label" for="checkbox-all">
-              Seclect All
+              Chọn tất cả
             </label>
         </div>
         <select class="form-control form-control-sm w-25 mx-3" id="exampleFormControlSelect1" name="action" required>
-          <option value="">--Opitons--</option>
-          <option value="delete">Delete</option>
+          <option  value="">----- Options -----</option>
+          <option value="delete">Xoá</option>
         </select>
   
-        <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Select</button>
+        <button  class="btn btn-primary btn-sm check-all-submit-btn" disabled>Xác nhận</button>
       </div>
     </div>
    
@@ -24,10 +24,12 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">on</th>
-            <th scope="col">Name</th>
-            <th scope="col">Level</th>
-            <th scope="col" colspan="3">Time line</th>
+            <th scope="col">Thứ tự</th>
+            <th scope="col">Tên video</th>
+            <th scope="col">Thể loại</th>
+            <th scope="col">Thời gian</th>
+            <th scope="col">Chỉnh sửa</th>
+            <th scope="col">Xoá</th>
           </tr>
         </thead>
         <tbody>
@@ -40,13 +42,13 @@
             </td>
             <th scope="row">{{sum @index 1}}</th>
             <td>{{this.name}}</td>
-            <td>{{this.level}}</td>
+            <td>{{this.category}}</td>
             <td>{{this.createdAt}}</td>
             <td>
-              <a href="/courses/{{this._id}}/edit" class="btn btn-link">Edit</a>
+              <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
             </td>
             <td>
-              <a href="#" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Delete</a>
+              <a href="#" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#delete-course-modal">Xoá</a>
             </td>
           </tr>
   
@@ -67,17 +69,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Delete course</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Xoá video</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          Delete course?
+          Bạn có muốn xoá video này?
         </div>
         <div class="modal-footer">
-          <button id="btn-delete-course" type="button" class="btn btn-danger">Delete</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="btn-delete-course" type="button" class="btn btn-danger">Xoá</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
         </div>
       </div>
     </div>
@@ -87,12 +89,14 @@
 <form name="delete-course-form" method="POST"></form>
 
 
+
   <script>
     document.addEventListener('DOMContentLoaded', function()  {
       var courseId;
-      var deleteForm = document.forms['delete-course-form'];
+      var deleteForm = document.forms['delete-course-form']
       var containerForm = $('input[name="container-form"]')
       var btnDeleteCourse = document.getElementById('btn-delete-course');
+      
       var checkboxAll = $('#checkbox-all');
       var courseItemCheckbox = $('input[name="courseIds[]"]')
       var checkAllSubmitBtn = $('.check-all-submit-btn')
@@ -108,6 +112,7 @@
         deleteForm.action = '/courses/' + courseId + '?_method=DELETE';
         deleteForm.submit();
       }
+
 
       // Checkbox all changed
       checkboxAll.change(function () {
